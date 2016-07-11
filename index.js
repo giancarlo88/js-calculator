@@ -4,7 +4,7 @@ var lastOp = "";
 var lastButton = "";
 
 $(".operator").on("click", function () {
-    input = parseFloat($("#nums").val(), 10);
+    input = parseFloat($(".nums").val(), 10);
     switch (true) {
     case (lastOp === "+"):
         storage += input;
@@ -25,39 +25,39 @@ $(".operator").on("click", function () {
     lastOp = $(this).attr("id");
     lastButton = lastOp;
     if (storage >= 9999999999) {
-        $('#nums').val("E");
+        $('.nums').val("E");
     }
     else {
-        $('#nums').val(storage);
+        $('.nums').val(storage);
     }
 });
 
 
 $(".number").on("click", function () {
     if (lastButton !== "number") {
-        $("#nums").val("");
+        $(".nums").val("");
     }
-    $("#nums").val($("#nums").val() + $(this).attr("id"));
+    $(".nums").val($(".nums").val() + $(this).attr("id"));
     lastButton = "number";
 });
 
 $(".dec").on("click", function () {
     if (lastButton !== "number") {
-        $("#nums").val("");
+        $(".nums").val("");
     }
-    if (($("#nums").val().length) < 1) {
-        $("#nums").val("0" + $(this).attr("id"));
+    if (($(".nums").val().length) < 1) {
+        $(".nums").val("0" + $(this).attr("id"));
     }
     else {
-        $("#nums").val($("#nums").val() + $(this).attr("id"));
+        $(".nums").val($(".nums").val() + $(this).attr("id"));
         }
         lastButton = "number";
 });
 
-$("#clear").on("click", function () {
+$(".clear").on("click", function () {
     input = 0;
     storage = 0;
     lastOp = "";
-    $("#nums").val(0);
+    $(".nums").val(0);
     lastButton = "clear";
 });
